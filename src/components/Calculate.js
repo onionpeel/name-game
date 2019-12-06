@@ -3,8 +3,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Calculate = () => {
-  return (
+const Calculate = ({count}) => (
     <Container style={{marginTop: 20}}>
       <Row style={{textAlign: 'center'}}>
         <Col>
@@ -12,8 +11,7 @@ const Calculate = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+);
 
 Calculate.propTypes = {
   count: PropTypes.number.isRequired
