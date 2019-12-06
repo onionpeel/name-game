@@ -2,23 +2,35 @@ import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {incrementCount} from '../actions/countActions';
 
-const Calculate = ({count}) => (
+const Calculate = ({count, incrementCount}) => {
+  const increaseCount = () => {
+    incrementCount(count);
+  };
+
+  return (
     <Container style={{marginTop: 20}}>
       <Row style={{textAlign: 'center'}}>
         <Col>
-          <Button>Submit the scores</Button>
+          <Button onClick={increaseCount}>Submit the scores</Button>
         </Col>
       </Row>
     </Container>
-);
+  );
+};
 
 Calculate.propTypes = {
-  count: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired,
+  incrementCount: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   count: state.count
 });
 
-export default connect(mapStateToProps)(Calculate);
+const mapDispatchToProps = {
+  incrementCount
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculate);

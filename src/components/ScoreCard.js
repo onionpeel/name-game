@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, Button, Container, Row, Col, Alert} from 'react-bootstrap';
+import {Card, Button, Container, Row, Col} from 'react-bootstrap';
 import ChangeValueAlert from './ChangeValueAlert';
 
 const ScoreCard = ({name, score}) => {
