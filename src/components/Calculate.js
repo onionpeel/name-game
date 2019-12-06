@@ -1,5 +1,7 @@
 import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Calculate = () => {
   return (
@@ -13,4 +15,12 @@ const Calculate = () => {
   );
 };
 
-export default Calculate;
+Calculate.propTypes = {
+  count: PropTypes.number.isRequired
+};
+
+const mapStateToProps = state => ({
+  count: state.count
+});
+
+export default connect(mapStateToProps)(Calculate);
