@@ -11,10 +11,10 @@ const Scoreboard = () => {
   ];
 
   return (
-    <Container style={{marginTop: 20}}>
+    <Container>
       <Row>
         {players.map(player => (
-          <Col key={uuid()}>
+          <Col xs={12} lg={4} style={{marginTop: 20}} key={uuid()}>
             <ScoreCard name={player.name} score={player.score} />
           </Col>
         ))}

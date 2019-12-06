@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Card, Button, Container, Row, Col} from 'react-bootstrap';
+import {Card, Button, Container, Row, Col, Alert} from 'react-bootstrap';
+import ChangeValueAlert from './ChangeValueAlert';
 
 const ScoreCard = ({name, score}) => {
-  const [change, setChange] = useState('');
+  const [change, setChange] = useState(Number());
 
   const incrementByTwo = () => {
     setChange(+change + 2);
@@ -17,7 +18,7 @@ const ScoreCard = ({name, score}) => {
   };
 
   const clearChanges = () => {
-    setChange('');
+    setChange(Number());
   };
 
   return (
@@ -28,6 +29,7 @@ const ScoreCard = ({name, score}) => {
           <Card.Text style={{textAlign: 'center', color: '#ffffff'}}>
             Change this round: {change}
           </Card.Text>
+        <ChangeValueAlert change={change} />
         <Container>
           <Row style={{textAlign: 'center'}}>
             <Col>
