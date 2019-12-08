@@ -1,36 +1,19 @@
 import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {incrementCount} from '../actions/countActions';
+import CountDown from './CountDown';
+import ShowButton from './ShowButton';
 
-const Calculate = ({count, incrementCount}) => {
-  const increaseCount = () => {
-    incrementCount(count);
-  };
+const Calculate = () => {
 
   return (
     <Container style={{marginTop: 20}}>
       <Row style={{textAlign: 'center'}}>
         <Col>
-          <Button onClick={increaseCount}>Submit the scores</Button>
+          <ShowButton />
         </Col>
       </Row>
     </Container>
   );
 };
 
-Calculate.propTypes = {
-  count: PropTypes.number.isRequired,
-  incrementCount: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
-  count: state.count
-});
-
-const mapDispatchToProps = {
-  incrementCount
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Calculate);
+export default Calculate;
