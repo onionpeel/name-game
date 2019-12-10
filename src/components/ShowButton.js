@@ -13,7 +13,7 @@ const ShowButton = ({incrementCount, count, isButtonDisplay, setDisplayButton, s
   const [winners, setWinners] = useState(null);
 
   useEffect(() => {
-    let winningPlayer = players.filter(player => player.score === 2);
+    let winningPlayer = players.filter(player => player.score === 15);
     if (winningPlayer.length === 1) {
       setWinner(winningPlayer[0].name);
     } else if (winningPlayer.length > 1) {
