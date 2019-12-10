@@ -6,6 +6,7 @@ import {submitUpdatedScore} from '../actions/scoreChangeActions';
 import ShowButton from './ShowButton';
 import {setAnswerString} from '../actions/buttonActions';
 import {createGameString} from '../array';
+import Speak from './Speak';
 
 const Result = ({answer, players, submitUpdatedScore, setAnswerString}) => {
   const [showAnswer, setShowAnswer] = useState(true);
@@ -20,7 +21,7 @@ const Result = ({answer, players, submitUpdatedScore, setAnswerString}) => {
     showAnswer
       ?
       <>
-        <p>{answer}</p>
+        <Speak />
         <Button onClick={handleOnClick}>Click to submit the changes and go to next round</Button>
       </>
       :
@@ -32,7 +33,7 @@ Result.propTypes = {
   answer: PropTypes.string.isRequired,
   submitUpdatedScore: PropTypes.func.isRequired,
   players: PropTypes.array.isRequired
-}
+};
 
 const mapStateToProps = state => ({
   answer: state.answer,
