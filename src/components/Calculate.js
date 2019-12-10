@@ -1,6 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
-import CountDown from './CountDown';
+import {Container, Row, Col} from 'react-bootstrap';
 import ShowButton from './ShowButton';
 
 const Calculate = () => {

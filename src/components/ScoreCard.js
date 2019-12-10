@@ -1,24 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Card, Button, Container, Row, Col} from 'react-bootstrap';
 import ChangeValueAlert from './ChangeValueAlert';
+import {setScoreChange} from '../actions/scoreChangeActions';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-const ScoreCard = ({name, score}) => {
-  const [change, setChange] = useState(Number());
+const ScoreCard = ({name, score, change, players, setScoreChange}) => {
+  useEffect(() => {
+    setLocalChange(change)
+  }, [players]);
+
+  const [localChange, setLocalChange] = useState(change);
 
   const incrementByTwo = () => {
-    setChange(+change + 2);
+    setScoreChange({
+      name,
+      change: 2,
+      score
+    });
+    setLocalChange(+localChange + 2);
   };
 
   const decrementByThree = () => {
-    setChange(+change - 3);
+    setScoreChange({
+      name,
+      change: -3,
+      score
+    });
+    setLocalChange(+localChange - 3);
   };
 
   const decrementByFive = () => {
-    setChange(+change - 5);
+    setScoreChange({
+      name,
+      change: -5,
+      score
+    });
+    setLocalChange(+localChange - 5);
   };
 
   const clearChanges = () => {
-    setChange(Number());
+    setScoreChange({
+      name,
+      change: 0,
+      score
+    });
+    setLocalChange(null);
   };
 
   return (
@@ -27,9 +54,9 @@ const ScoreCard = ({name, score}) => {
       <Card.Body style={{backgroundColor: '#111617'}}>
         <Card.Title as="h1" style={{textAlign: 'center', color: '#ffffff'}}>{score}</Card.Title>
           <Card.Text style={{textAlign: 'center', color: '#ffffff'}}>
-            Change this round: {change}
+            Change this round: {localChange}
           </Card.Text>
-        <ChangeValueAlert change={change} />
+        <ChangeValueAlert change={localChange} />
         <Container>
           <Row style={{textAlign: 'center'}}>
             <Col>
@@ -53,4 +80,16 @@ const ScoreCard = ({name, score}) => {
   );
 };
 
-export default ScoreCard;
+ScoreCard.propTypes = {
+  setScoreChange: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  players: state.players
+});
+
+const mapDispatchToProps = {
+  setScoreChange
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreCard);

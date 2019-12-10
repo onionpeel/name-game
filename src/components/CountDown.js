@@ -11,6 +11,10 @@ const CountDown = () => {
       };
       clearInterval(timer);
     }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
   }, [count]);
 
   return (
@@ -18,7 +22,7 @@ const CountDown = () => {
       {
         count > 0
           ?
-          <p>{count}</p>
+          <h3>{count}</h3>
           :
           <Result />
       }

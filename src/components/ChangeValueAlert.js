@@ -2,7 +2,7 @@ import React from 'react';
 import {Alert} from 'react-bootstrap';
 
 const ChangeValueAlert = ({change}) => (
-  change === 0 || change === 2 || change === -3 || change === -5
+  change === 0 || change === 2 || change === -3 || change === -5 || change === null
     ?
     null
     :
