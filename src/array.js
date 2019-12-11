@@ -1,7 +1,7 @@
 export const createGameString = array => {
   const name1 = ['re', 'be', 'ka'];
   const name2 = ['sam', 'you', 'el'];
-  const name3 = ['ab', 'bi', 'gail'];
+  const name3 = ['ab', 'ba', 'gail'];
 
   const names = [...name1, ...name2, ...name3];
 
